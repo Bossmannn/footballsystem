@@ -109,7 +109,7 @@
                         <i class="fa-fw fas fa-futbol">
                         </i>
                         <p>
-                            {{ trans('Games') }}
+                            {{ trans('Games Result') }}
                         </p>
                     </a>
                 </li>
