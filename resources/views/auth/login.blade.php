@@ -1,29 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 @section('content')
-<div class="login-box">
-    <div class="login-logo">
-        <div class="login-logo">
-            <a href="{{ route('admin.home') }}">
-                {{ trans('panel.site_title') }}
-            </a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">
-                {{ trans('global.login') }}
-            </p>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mx-4">
+            <div class="card-body p-4">
+                <h1>{{ trans('Football League System') }}</h1>
 
-            @if(session()->has('message'))
-                <p class="alert alert-info">
-                    {{ session()->get('message') }}
-                </p>
-            @endif
+                <p class="text-muted">{{ trans('global.login') }}</p>
+
+                @if(session('message'))
+                    <div class="alert alert-info" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
 
             <form action="{{ route('login') }}" method="POST">
                 @csrf
+                 <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
 
-                <div class="form-group">
+                
                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" name="email" value="{{ old('email', null) }}">
 
                     @if($errors->has('email'))
@@ -33,7 +33,10 @@
                     @endif
                 </div>
 
-                <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    </div>
                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ trans('global.login_password') }}">
 
                     @if($errors->has('password'))
@@ -72,6 +75,7 @@
             <p class="mb-1">
 
             </p>
+           </div>
         </div>
         <!-- /.login-card-body -->
     </div>
